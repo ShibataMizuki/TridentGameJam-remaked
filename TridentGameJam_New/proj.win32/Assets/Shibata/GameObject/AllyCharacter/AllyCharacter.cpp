@@ -1,5 +1,6 @@
 #include "AllyCharacter.h"
 #include"Shibata/Defines.h"
+#include"Shibata/Utility/Utility.h"
 
 USING_NS_CC;
 
@@ -18,25 +19,12 @@ void AllyCharacter::update(float dt)
 void AllyCharacter::setSpriteAnimation(const std::string& filename)
 {
 	auto animation = Animation::create();
-
-	float width = CHARA_PIC_SIZE_W / (float)CHARA_PIC_DIV_X;
-	float height = CHARA_PIC_SIZE_H / (float)CHARA_PIC_DIV_Y;
-
 	auto origin = Sprite::create();
 	addChild(origin);
 
-	SpriteFrame* sprites[CHARA_PIC_DIV_X*CHARA_PIC_DIV_Y];
-
 	int cnt = 0;
 
-	for (int y = 0; y < CHARA_PIC_DIV_Y; y++)
-	{
-		for (int x = 0; x < CHARA_PIC_DIV_X; x++)
-		{
-			sprites[cnt]=SpriteFrame::create(filename, Rect(width*x, height*y, width,height));
-			cnt++;
-		}
-	}
+	auto sprites = divideSprite(Sprite::create(filename), CHARA_PIC_DIV_X, CHARA_PIC_DIV_Y);
 
 	animation->addSpriteFrame(sprites[6]);
 	animation->addSpriteFrame(sprites[7]);

@@ -7,6 +7,15 @@
 #include<cocos2d.h>
 #include"../CollisionSystem/CollisionSystem.h"
 
+enum class ObjectGroup
+{
+	AllyCharacter,
+	EnemyCharacter,
+	AllyBullet,
+	EnemyBullet,
+	DropItem,
+};
+
 //! @brief ゲームに出現するオブジェクトの基底
 class GameObject :public cocos2d::Node
 {
