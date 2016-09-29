@@ -171,6 +171,11 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
     <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
+    <ClCompile Include="Assets\TestScenes\HaradaTestScene\HaradaTestScene.cpp" />
+    <ClCompile Include="Assets\TestScenes\JussiTestScene\JussiTestScene.cpp" />
+    <ClCompile Include="Assets\TestScenes\OharaTestScene\OharaTestScene.cpp" />
+    <ClCompile Include="Assets\TestScenes\ShibataTestScene\ShibataTestScene.cpp" />
+    <ClCompile Include="Assets\TestScenes\TestSceneHub.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +206,11 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="Assets\Shibata\GameObject\GameObject.h" />
     <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />
+    <ClInclude Include="Assets\TestScenes\HaradaTestScene\HaradaTestScene.h" />
+    <ClInclude Include="Assets\TestScenes\JussiTestScene\JussiTestScene.h" />
+    <ClInclude Include="Assets\TestScenes\OharaTestScene\OharaTestScene.h" />
+    <ClInclude Include="Assets\TestScenes\ShibataTestScene\ShibataTestScene.h" />
+    <ClInclude Include="Assets\TestScenes\TestSceneHub.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
