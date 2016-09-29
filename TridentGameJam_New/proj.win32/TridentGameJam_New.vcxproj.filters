@@ -23,10 +23,10 @@
     <ClCompile Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
-    <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Assets\Harada\Temporary\Temporary.cpp" />
+    <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -53,10 +53,10 @@
     <ClInclude Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.h" />
     <ClInclude Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.h" />
     <ClInclude Include="Assets\Shibata\GameObject\GameObject.h" />
-    <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Assets\Harada\Temporary\Temporary.h" />
+    <ClInclude Include="Assets\Shibata\Party\Party.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />

@@ -192,6 +192,13 @@ bool Temporary::init()
 	testChara2->setBody(body2);
 	testChara2->setSpriteAnimation("Characters/Character02.png");
 	party->setPartyMember(testChara2, PartyIndex::_2);
+
+	if (party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
+	{
+		party->getPartyMember(PartyIndex::_1)->enableSkill();
+		party->getPartyMember(PartyIndex::_1)->useSp(5);
+	}
+	
 	// ========================================================== //
 
 
@@ -244,4 +251,18 @@ void Temporary::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 void Temporary::onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 
+}
+
+void Temporary::ButtonEvent(Ref *pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::Widget::TouchEventType::BEGAN:
+		break;
+	case ui::Widget::TouchEventType::MOVED:
+		break;
+	case ui::Widget::TouchEventType::ENDED:
+	
+		break;
+	}
 }

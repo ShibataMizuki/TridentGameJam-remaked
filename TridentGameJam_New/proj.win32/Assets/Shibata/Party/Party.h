@@ -46,7 +46,7 @@ public:
 	void setPartyMember(AllyCharacter* ally, PartyIndex index);
 
 	//! @brief パーティメンバーを取得する
-	//! @param index パーティメンバー番号
+	//! @param index ぱｒｔｙ
 	AllyCharacter* getPartyMember(PartyIndex index);
 
 	//! @brief パーティメンバーを外す
