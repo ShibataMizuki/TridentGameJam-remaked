@@ -9,8 +9,14 @@ using uint = unsigned int;
 
 enum class PartyIndex : uint
 {
-	_1 = 0,
-	_2, _3, _4, Max
+	_1, _2, _3, _4, 
+	Max,
+};
+
+enum class FormationIndex :uint
+{
+	_1, _2, _3, _4,
+	Max
 };
 
 class Party :public cocos2d::Node
