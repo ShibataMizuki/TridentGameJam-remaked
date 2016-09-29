@@ -10,6 +10,12 @@
 
 #include"Shibata/Party/Party.h"
 
+// ========================================================== //
+#include"Harada\background\backgroundLayer.h"
+// ========================================================== //
+
+
+
 USING_NS_CC;
 
 static CSWorld* g_pWorld;
@@ -106,7 +112,11 @@ cocos2d::Scene * Temporary::createScene()
 {
 	auto scene = Scene::create();
 	auto layer = Temporary::create();
-	scene->addChild(layer);
+	scene->addChild(layer,2);
+	// ========================================================== //
+	auto backgroundlayer = backgroundLayer::create();
+	scene->addChild(backgroundlayer);
+	// ========================================================== //
 	return scene;
 }
 
@@ -171,18 +181,19 @@ bool Temporary::init()
 	debugDraw->setCSWorld(g_pWorld);
 	addChild(debugDraw);
 
-	auto background = Sprite::create("Backgrounds/plain.jpg");
+	/*auto background = Sprite::create("Backgrounds/plain.jpg");
 	background->setAnchorPoint(Vec2(0.f, 0.f));
-	addChild(background);
+	addChild(background);*/
 
-	Party* party = Party::create();
+	//Party* party = Party::create();
+	g_party = Party::create();
 	auto testChara = TestCharacter::create();
 	auto body = CSBody::createShared();
 	body->addShape(CSCircle::createShared(30.f));
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
 	testChara->setSpriteAnimation("Characters/Character01.png");
-	party->setPartyMember(testChara, PartyIndex::_1);
+	g_party->setPartyMember(testChara, PartyIndex::_1);
 
 	// ========================================================== //
 	auto testChara2 = TestCharacter::create();
@@ -191,18 +202,24 @@ bool Temporary::init()
 	g_pWorld->addBody(body2);
 	testChara2->setBody(body2);
 	testChara2->setSpriteAnimation("Characters/Character02.png");
-	party->setPartyMember(testChara2, PartyIndex::_2);
+	g_party->setPartyMember(testChara2, PartyIndex::_2);
 
-	if (party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
+	// ƒ{ƒ^ƒ“
+	auto button = ui::Button::create("Characters/Character01.png", "Characters/Character02.png");
+	button->setPosition(Vec2(300,300));
+	this->addChild(button);
+	button->addTouchEventListener(CC_CALLBACK_2(Temporary::ButtonEvent, this));
+
+	/*if (g_party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
 	{
-		party->getPartyMember(PartyIndex::_1)->enableSkill();
-		party->getPartyMember(PartyIndex::_1)->useSp(5);
-	}
+		g_party->getPartyMember(PartyIndex::_1)->enableSkill();
+		g_party->getPartyMember(PartyIndex::_1)->useSp(5);
+	}*/
 	
 	// ========================================================== //
 
 
-	addChild(party);
+	addChild(g_party);
 	this->scheduleUpdate();
 
 	return true;
@@ -253,11 +270,19 @@ void Temporary::onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event)
 
 }
 
+
+
 void Temporary::ButtonEvent(Ref *pSender, cocos2d::ui::Widget::TouchEventType type)
 {
 	switch (type)
 	{
 	case ui::Widget::TouchEventType::BEGAN:
+		if (g_party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
+		{
+			g_party->getPartyMember(PartyIndex::_1)->enableSkill();
+			g_party->getPartyMember(PartyIndex::_1)->useSp(5);
+			log("pushed");
+		}
 		break;
 	case ui::Widget::TouchEventType::MOVED:
 		break;
