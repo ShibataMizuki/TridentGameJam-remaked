@@ -166,7 +166,7 @@ bool Example::init()
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
 	testChara->setSpriteAnimation("Characters/Character01.png");
-	party->setPartyMember(testChara, PartyIndex::_1, Vec2::ZERO);
+	party->setPartyMember(testChara, PartyIndex::_1);
 	
 
 	addChild(party);

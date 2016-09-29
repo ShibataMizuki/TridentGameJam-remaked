@@ -37,14 +37,11 @@ public:
 	//! @param ally 設定するパーティメンバー
 	//! @param index パーティメンバー番号
 	//! @param pos 座標
-	void setPartyMember(AllyCharacter* ally, PartyIndex index, cocos2d::Vec2 pos);
+	void setPartyMember(AllyCharacter* ally, PartyIndex index);
 
 	//! @brief パーティメンバーを取得する
 	//! @param index パーティメンバー番号
 	AllyCharacter* getPartyMember(PartyIndex index);
-
-	//! @brief パーティメンバーの座標を取得する
-	const cocos2d::Vec2& getPartyMemberPosition(PartyIndex index);
 
 	//! @brief パーティメンバーを外す
 	//! @param index パーティメンバー番号
@@ -54,7 +51,7 @@ public:
 	陣形
 	===============================*/
 public:
-
+	cocos2d::Vec2 m_formationData[(uint)PartyIndex::Max];
 private:
 public:
 	//! @brief 即座に陣形を変更する
