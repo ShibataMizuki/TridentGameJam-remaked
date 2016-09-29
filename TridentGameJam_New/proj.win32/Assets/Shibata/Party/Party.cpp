@@ -26,7 +26,7 @@ void Party::update(float dt)
 {
 }
 
-void Party::setPartyMember(AllyCharacter * ally, PartyIndex index, cocos2d::Vec2 pos)
+void Party::setPartyMember(AllyCharacter * ally, PartyIndex index)
 {
 	m_partyMembers[(uint)index] = ally;
 	this->addChild(m_partyMembers[(uint)index]);
@@ -35,11 +35,6 @@ void Party::setPartyMember(AllyCharacter * ally, PartyIndex index, cocos2d::Vec2
 AllyCharacter * Party::getPartyMember(PartyIndex index)
 {
 	return m_partyMembers[(uint)index];
-}
-
-const cocos2d::Vec2 & Party::getPartyMemberPosition(PartyIndex index)
-{
-	return m_partyMemberPositions[(uint)index];
 }
 
 void Party::removePartyMember(PartyIndex index)
