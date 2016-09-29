@@ -123,7 +123,7 @@ bool Example::init()
 		body->addShape(CSCircle::createShared(20.f));
 		m_pWorld->addBody(body);
 		chara->setBody(body);
-		chara->setPosition(Vec2(0.f,f1*60.f));
+		chara->setPosition(Vec2(60.f,f1*60.f));
 		chara->setSpriteAnimation("Characters/Character01.png");
 		party->setPartyMember(chara, (PartyIndex)f1, Vec2(0.f, 0.f));
 		chara->setScale(2.0f);

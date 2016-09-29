@@ -36,8 +36,8 @@ bool backgroundLayer::init()
 void backgroundLayer::update(float dt)
 {
 	// 背景を毎フレーム3px左にスクロール
-	_background1->setPositionX(_background1->getPositionX() - 3);
-	_background2->setPositionX(_background2->getPositionX() - 3);
+	_background1->setPositionX(_background1->getPositionX() - 2);
+	_background2->setPositionX(_background2->getPositionX() - 2);
 
 	if (_background2->getPositionX() < 0) 
 	{

@@ -2,6 +2,10 @@
 #include "HelloWorldScene.h"
 #include"Shibata/Example/Example.h"
 
+// ‰¼
+#include <Harada/Title/TitleScene.h>
+
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -35,7 +39,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->getOpenGLView()->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -43,7 +47,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-	auto scene = Example::createScene();
+	//auto scene = Example::createScene();
+
+	// ‰¼
+	auto scene = TitleScene::create();
 
     // run
     director->runWithScene(scene);
