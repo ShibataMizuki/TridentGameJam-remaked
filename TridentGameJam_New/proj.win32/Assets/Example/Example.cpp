@@ -12,29 +12,46 @@
 
 USING_NS_CC;
 
+static CSWorld* g_pWorld;
 
-enum class ObjectType:int
+enum ObjectType
 {
 	Player,
-	Enemy,
+	Bullet,
+	Wall,
 };
 
+/*==============================
+–¡•û‚Ì’e
+===============================*/
 class TestBullet :public GameObject
 {
 private:
 public:
+	CREATE_FUNC(TestBullet);
+
 	bool init()override
 	{
 		if (!GameObject::init())
 			return false;
 		scheduleUpdate();
+		
+		auto body = CSBody::createShared();
+		body->addShape(CSCircle::createShared(10.f));
+		body->setCollisionGroup(ObjectType::Bullet);
+		setBody(body);
+		g_pWorld->addBody(body);
+
+		addChild(Sprite::create("Example/effect.png"));
+		setScale(0.5f);
+
 		return true;
 	}
 
 	void update(float dt)override
 	{
 		auto pos = getPosition();
-		pos.x += 5;
+		pos.x += 15;
 		setPosition(pos);
 		syncBody();
 	}
@@ -47,6 +64,12 @@ public:
 //! AllyCharacter‚ðŒp³‚µ‚½ƒNƒ‰ƒX‚ðì‚é
 class TestCharacter :public AllyCharacter
 {
+private:
+	//! Œo‰ßŽžŠÔ
+	float m_elapsedTime;
+	//! ŽËŒ‚ŠÔŠu
+	float m_shotInterval;
+
 public:
 	CREATE_FUNC(TestCharacter);
 
@@ -56,13 +79,23 @@ public:
 		if (!AllyCharacter::init())
 			return false;
 		scheduleUpdate();
+		m_elapsedTime = 0.f;
+
+		m_shotInterval = 0.2f;
 
 		return true;
 	}
 
 	void update(float dt)override
 	{
-		//auto bullet=
+		m_elapsedTime += dt;
+		if (m_elapsedTime >= m_shotInterval)
+		{
+			auto bullet = TestBullet::create();
+			bullet->setPosition(getParent()->convertToWorldSpace(getPosition()));
+			getParent()->getParent()->addChild(bullet);
+			m_elapsedTime = 0.0f;
+		}
 		//! syncBody‚ÅCSBody‚ÆƒLƒƒƒ‰‚ÌÀ•W‚ð“¯Šú‚³‚¹‚é
 		syncBody();
 	}
@@ -81,43 +114,45 @@ bool Example::init()
 {
 	if (!Layer::init())return false;
 	//! 2. create world
-	m_pWorld = new CSWorld();
+	g_pWorld = new CSWorld();
 	//! 3. create body
 	auto bodyA = CSBody::createShared();
 	//! 4. create shape and setting to body
 	auto circleA = CSCircle::createShared(70.f);
 	bodyA->addShape(circleA);
 	//! 5. set position
-	bodyA->setPosition(CSVec2(250.f, 200.f));
+	bodyA->setPosition(CSVec2(450.f, 200.f));
 	//! 6. set collision group. This is used for a hit judgment rule
-	bodyA->setCollisionGroup((int)ObjectType::Player);
+	bodyA->setCollisionGroup(ObjectType::Wall);
 	//! 7. registering body to world
-	m_pWorld->addBody(bodyA);
+	g_pWorld->addBody(bodyA);
 
 	auto bodyB = CSBody::createShared();
 	auto circleB = CSCircle::createShared(50.f);
 	bodyB->addShape(circleB);
-	bodyB->setPosition(CSVec2(150.f, 150.f));
-	bodyB->setCollisionGroup((int)ObjectType::Enemy);
+	bodyB->setPosition(CSVec2(450.f, 400.f));
+	bodyB->setCollisionGroup(ObjectType::Wall);
 
-	m_pWorld->addBody(bodyB);
+	g_pWorld->addBody(bodyB);
 
 	//! 8. create callback and setting two groups of the object which collide
-	auto callback = CSHitCallback::createShared((int)ObjectType::Player, (int)ObjectType::Enemy);
+	auto callback = CSHitCallback::createShared(ObjectType::Bullet, ObjectType::Wall);
 
 	//! 9. setting callback
 	callback->HitBegin = [](const std::shared_ptr<CSBody>& bodyA,const std::shared_ptr<CSBody>& bodyB)
 	{
-		cocos2d::log("Hit!");
+		auto bullet = bodyA->getCastedUserData<TestBullet>();
+		bullet->removeFromParent();
+		g_pWorld->destroyBody(bodyA);
 	};
 
 	//! 10. registering callback to world
-	m_pWorld->addHitCallback(callback);
+	g_pWorld->addHitCallback(callback);
 
 	//! (optional) debug draw setting
 	DebugDraw::getInstance()->initialize(this);
 	auto debugDraw=CollisionSystemDebugDraw::create();
-	debugDraw->setCSWorld(m_pWorld);
+	debugDraw->setCSWorld(g_pWorld);
 	addChild(debugDraw);
 
 	auto background = Sprite::create("Backgrounds/plain.jpg");
@@ -125,6 +160,13 @@ bool Example::init()
 	addChild(background);
 
 	Party* party = Party::create();
+	auto testChara = TestCharacter::create();
+	auto body = CSBody::createShared();
+	body->addShape(CSCircle::createShared(30.f));
+	g_pWorld->addBody(body);
+	testChara->setBody(body);
+	testChara->setSpriteAnimation("Characters/Character01.png");
+	party->setPartyMember(testChara, PartyIndex::_1, Vec2::ZERO);
 	
 	addChild(party);
 	this->scheduleUpdate();
@@ -135,5 +177,5 @@ bool Example::init()
 void Example::update(float dt)
 {
 	//! 11. call every frame this
-	m_pWorld->executeCollision();
+	g_pWorld->executeCollision();
 }
