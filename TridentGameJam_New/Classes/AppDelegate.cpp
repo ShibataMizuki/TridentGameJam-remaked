@@ -8,8 +8,8 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+AppDelegate::AppDelegate() 
+{
 }
 
 AppDelegate::~AppDelegate() 
@@ -48,7 +48,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 	auto scene = Temporary::createScene();
-
 
     // run
     director->runWithScene(scene);
