@@ -182,7 +182,7 @@ bool Temporary::init()
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
 	testChara->setSpriteAnimation("Characters/Character01.png");
-	party->setPartyMember(testChara, PartyIndex::_1, Vec2(0.f, 0.f));
+	party->setPartyMember(testChara, PartyIndex::_1);
 
 	// ========================================================== //
 	auto testChara2 = TestCharacter::create();
@@ -191,7 +191,7 @@ bool Temporary::init()
 	g_pWorld->addBody(body2);
 	testChara2->setBody(body2);
 	testChara2->setSpriteAnimation("Characters/Character02.png");
-	party->setPartyMember(testChara2, PartyIndex::_2, Vec2(50.f, 50.f));
+	party->setPartyMember(testChara2, PartyIndex::_2);
 	// ========================================================== //
 
 
