@@ -1,2 +1,5 @@
-TridentGameJam_New/proj.win32/Assets/Example/Example.cpp
-TridentGameJam_New/proj.win32/TridentGameJam_New.vcxproj.filters
+TridentGameJam_New/*
+!TridentGameJam_New/Classes/
+!TridentGameJam_New/Resources/
+TridentGameJam_New/proj.win32/*
+!TridentGameJam_New/proj.win32/Assets/
