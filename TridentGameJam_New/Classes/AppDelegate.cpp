@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include"Shibata/Example/Example.h"
+#include"Example/Example.h"
 
 USING_NS_CC;
 

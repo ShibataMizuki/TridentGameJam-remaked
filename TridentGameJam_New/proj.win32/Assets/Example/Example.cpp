@@ -1,12 +1,12 @@
 #include "Example.h"
 
 //! 1. include CollisionSystem.h
-#include"../CollisionSystem/CollisionSystem.h"
+#include"Shibata/CollisionSystem/CollisionSystem.h"
 
 //! (optional) include CollisionSystemDebugDraw.h
-#include"../CollisionSystemDebugDraw/CollisionSystemDebugDraw.h"
+#include"Shibata/CollisionSystemDebugDraw/CollisionSystemDebugDraw.h"
 
-#include"../GameObject/AllyCharacter/AllyCharacter.h"
+#include"Shibata/GameObject/AllyCharacter/AllyCharacter.h"
 
 #include"Shibata/Party/Party.h"
 
@@ -17,6 +17,28 @@ enum class ObjectType:int
 {
 	Player,
 	Enemy,
+};
+
+class TestBullet :public GameObject
+{
+private:
+public:
+	bool init()override
+	{
+		if (!GameObject::init())
+			return false;
+		scheduleUpdate();
+		return true;
+	}
+
+	void update(float dt)override
+	{
+		auto pos = getPosition();
+		pos.x += 5;
+		setPosition(pos);
+		syncBody();
+	}
+
 };
 
 /*==============================
@@ -40,20 +62,9 @@ public:
 
 	void update(float dt)override
 	{
+		auto bullet=
 		//! syncBodyでCSBodyとキャラの座標を同期させる
 		syncBody();
-	}
-
-	//! 攻撃方法を定義する
-	void executeAttack(float dt)override
-	{
-
-	}
-
-	//! スキルを定義する
-	void skillAttack()override
-	{
-
 	}
 };
 
@@ -69,7 +80,6 @@ cocos2d::Scene * Example::createScene()
 bool Example::init()
 {
 	if (!Layer::init())return false;
-
 	//! 2. create world
 	m_pWorld = new CSWorld();
 	//! 3. create body
@@ -115,31 +125,6 @@ bool Example::init()
 	addChild(background);
 
 	Party* party = Party::create();
-
-	for (int f1 = 0; f1 < 2; f1++)
-	{
-		TestCharacter* chara = TestCharacter::create();
-		auto body = CSBody::createShared();
-		body->addShape(CSCircle::createShared(20.f));
-		m_pWorld->addBody(body);
-		chara->setBody(body);
-		chara->setPosition(Vec2(0.f,f1*60.f));
-		chara->setSpriteAnimation("Characters/Character01.png");
-		party->setPartyMember(chara, (PartyIndex)f1, Vec2(0.f, 0.f));
-		chara->setScale(2.0f);
-	}
-	for (int f1 = 0; f1 < 2; f1++)
-	{
-		TestCharacter* chara = TestCharacter::create();
-		auto body = CSBody::createShared();
-		body->addShape(CSCircle::createShared(20.f));
-		m_pWorld->addBody(body);
-		chara->setBody(body);
-		chara->setPosition(Vec2(0.f, (f1+2)*60.f));
-		chara->setSpriteAnimation("Characters/Character02.png");
-		party->setPartyMember(chara, (PartyIndex)(f1+2), Vec2(0.f, 0.f));
-		chara->setScale(2.0f);
-	}
 	
 	addChild(party);
 	this->scheduleUpdate();

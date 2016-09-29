@@ -32,11 +32,12 @@
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSworld\CSWorld.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.cpp" />
     <ClCompile Include="Assets\Shibata\DebugDraw\DebugDraw.cpp" />
-    <ClCompile Include="Assets\Shibata\Example\Example.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
     <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
+    <ClCompile Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.cpp" />
+    <ClCompile Include="Assets\Example\Example.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -60,12 +61,13 @@
     <ClInclude Include="Assets\Shibata\CollisionSystem\CollisionSystem.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.h" />
     <ClInclude Include="Assets\Shibata\DebugDraw\DebugDraw.h" />
-    <ClInclude Include="Assets\Shibata\Example\Example.h" />
     <ClInclude Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.h" />
     <ClInclude Include="Assets\Shibata\GameObject\GameObject.h" />
     <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />
     <ClInclude Include="Assets\Shibata\Defines.h" />
+    <ClInclude Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.h" />
+    <ClInclude Include="Assets\Example\Example.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
