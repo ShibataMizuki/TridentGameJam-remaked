@@ -27,5 +27,7 @@ bool ShibataTestScene::init()
 		return false;
 	}
 
+	addChild(Sprite::create("TestScene/doge1.jpg"));
+
 	return true;
 }
