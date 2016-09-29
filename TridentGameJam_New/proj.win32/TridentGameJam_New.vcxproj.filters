@@ -37,6 +37,11 @@
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
     <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
+    <ClCompile Include="Assets\Harada\background\backgroundLayer.cpp" />
+    <ClCompile Include="Assets\Harada\bullet\Bullet.cpp" />
+    <ClCompile Include="Assets\Harada\Title\TitleLayer.cpp" />
+    <ClCompile Include="Assets\Harada\Title\TitleScene.cpp" />
+    <ClCompile Include="Assets\Harada\MyAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -66,6 +71,11 @@
     <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />
     <ClInclude Include="Assets\Shibata\Defines.h" />
+    <ClInclude Include="Assets\Harada\background\backgroundLayer.h" />
+    <ClInclude Include="Assets\Harada\bullet\Bullet.h" />
+    <ClInclude Include="Assets\Harada\Title\TitleLayer.h" />
+    <ClInclude Include="Assets\Harada\Title\TitleScene.h" />
+    <ClInclude Include="Assets\Harada\MyAction.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
