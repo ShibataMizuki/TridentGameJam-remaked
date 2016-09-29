@@ -62,7 +62,7 @@ public:
 
 	void update(float dt)override
 	{
-		auto bullet=
+		//auto bullet=
 		//! syncBody‚ÅCSBody‚ÆƒLƒƒƒ‰‚ÌÀ•W‚ğ“¯Šú‚³‚¹‚é
 		syncBody();
 	}
