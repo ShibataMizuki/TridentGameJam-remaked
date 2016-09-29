@@ -1,7 +1,7 @@
 /*
 * ”wŒiƒŒƒCƒ„[
 */
-#include "backgroundLayer.h"
+#include <Harada/background/backgroundLayer.h>
 
 using namespace std;
 
@@ -18,12 +18,12 @@ bool backgroundLayer::init()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// ”wŒi1‚ğ‰æ–Ê¶’[‚É‡‚í‚¹‚Äİ’u
-	_background1 = Sprite::create("background.png");
+	_background1 = Sprite::create("Backgrounds/plain.jpg");
 	_background1->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	_background1->setPosition(Vec2(0, 0));
 	this->addChild(_background1);
 	// ”wŒi2‚ğ”wŒi1‚Ì‰E—×‚Éİ’u
-	_background2 = Sprite::create("background.png");
+	_background2 = Sprite::create("Backgrounds/plain.jpg");
 	_background2->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	_background2->setPosition(Vec2(_background1->getContentSize().width, 0));
 	this->addChild(_background2);
