@@ -1,85 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="Assets\Harada\background\backgroundLayer.cpp" />
+    <ClCompile Include="Assets\Harada\bullet\Bullet.cpp" />
+    <ClCompile Include="Assets\Harada\MyAction.cpp" />
+    <ClCompile Include="Assets\Harada\Title\TitleLayer.cpp" />
+    <ClCompile Include="Assets\Harada\Title\TitleScene.cpp" />
+    <ClCompile Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSBody\CSBody.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSHitCallback\CSHitCallback.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\AABB\AABB.cpp" />
+    <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\CollisionDetection.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\CSCircle\CSCircle.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\CSPolygon\CSPolygon.cpp" />
-    <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\CollisionDetection.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSShape\CSShape.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSVec2\CSVec2.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSworld\CSWorld.cpp" />
-    <ClCompile Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.cpp" />
     <ClCompile Include="Assets\Shibata\DebugDraw\DebugDraw.cpp" />
-    <ClCompile Include="Assets\Shibata\Example\Example.cpp" />
+    <ClCompile Include="Assets\Example\Example.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.cpp" />
+    <ClCompile Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
     <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
-    <ClCompile Include="Assets\Harada\background\backgroundLayer.cpp" />
-    <ClCompile Include="Assets\Harada\bullet\Bullet.cpp" />
-    <ClCompile Include="Assets\Harada\Title\TitleLayer.cpp" />
-    <ClCompile Include="Assets\Harada\Title\TitleScene.cpp" />
-    <ClCompile Include="Assets\Harada\MyAction.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Assets\Harada\Temporary\Temporary.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="Assets\Harada\background\backgroundLayer.h" />
+    <ClInclude Include="Assets\Harada\bullet\Bullet.h" />
+    <ClInclude Include="Assets\Harada\MyAction.h" />
+    <ClInclude Include="Assets\Harada\Title\TitleLayer.h" />
+    <ClInclude Include="Assets\Harada\Title\TitleScene.h" />
+    <ClInclude Include="Assets\Shibata\Defines.h" />
+    <ClInclude Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.h" />
+    <ClInclude Include="Assets\Shibata\CollisionSystem\CollisionSystem.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSBody\CSBody.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSHitCallback\CSHitCallback.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\AABB\AABB.h" />
+    <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\CollisionDetection.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\CSCircle\CSCircle.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\CSPolygon\CSPolygon.h" />
-    <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\CollisionDetection.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSShape\CSShape.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSVec2\CSVec2.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSworld\CSWorld.h" />
-    <ClInclude Include="Assets\Shibata\CollisionSystem\CollisionSystem.h" />
-    <ClInclude Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.h" />
     <ClInclude Include="Assets\Shibata\DebugDraw\DebugDraw.h" />
-    <ClInclude Include="Assets\Shibata\Example\Example.h" />
+    <ClInclude Include="Assets\Example\Example.h" />
     <ClInclude Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.h" />
+    <ClInclude Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.h" />
     <ClInclude Include="Assets\Shibata\GameObject\GameObject.h" />
     <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />
-    <ClInclude Include="Assets\Shibata\Defines.h" />
-    <ClInclude Include="Assets\Harada\background\backgroundLayer.h" />
-    <ClInclude Include="Assets\Harada\bullet\Bullet.h" />
-    <ClInclude Include="Assets\Harada\Title\TitleLayer.h" />
-    <ClInclude Include="Assets\Harada\Title\TitleScene.h" />
-    <ClInclude Include="Assets\Harada\MyAction.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Assets\Harada\Temporary\Temporary.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="game.rc" />
   </ItemGroup>
 </Project>

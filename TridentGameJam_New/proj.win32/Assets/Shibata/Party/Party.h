@@ -23,6 +23,9 @@ public:
 	void update(float dt)override;
 	CREATE_FUNC(Party);
 
+	/*==============================
+	メンバーの管理
+	===============================*/
 private:
 	//! パーティメンバー
 	AllyCharacter* m_partyMembers[(uint)PartyIndex::Max];
@@ -50,8 +53,12 @@ public:
 	/*==============================
 	陣形
 	===============================*/
-private:
+public:
 
+private:
+public:
+	//! @brief 即座に陣形を変更する
+	void changeFormationInstantly();
 
 	/*==============================
 	移動用

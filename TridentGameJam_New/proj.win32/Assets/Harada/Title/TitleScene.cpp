@@ -19,7 +19,7 @@ bool TitleScene::init()
 	auto Titlelayer = TitleLayer::create();
 	auto backgroundlayer = backgroundLayer::create();
 
-	this->addChild(backgroundlayer);
+	this->addChild(backgroundlayer,-1);
 	this->addChild(Titlelayer);
 
 	return true;

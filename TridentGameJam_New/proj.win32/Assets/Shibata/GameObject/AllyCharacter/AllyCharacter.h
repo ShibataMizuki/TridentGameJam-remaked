@@ -63,10 +63,11 @@ public:
 	/*==============================
 	行動管理
 	===============================*/
-	//! @brief 攻撃処理
-	//! @param dt デルタタイム
-	virtual void executeAttack(float dt) = 0;
-
-	//! @brief スキル
-	virtual void skillAttack() = 0;
+private:
+	bool m_skillEnabled;
+public:
+	//! スキル有効化
+	void enableSkill();
+	//! スキルが有効かどうか
+	bool isSkillEnabled()const;
 };

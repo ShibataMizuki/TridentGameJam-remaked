@@ -3,6 +3,8 @@
 */
 
 #include <Harada/Title/TitleLayer.h>
+#include <Harada/MyAction.h>
+
 #include "SimpleAudioEngine.h"
 using namespace CocosDenshion;
 
@@ -17,7 +19,7 @@ bool TitleLayer::init()
 	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	
+
 
 	// イベントリスナー作成
 	auto Listener = EventListenerTouchOneByOne::create();
@@ -46,12 +48,25 @@ bool TitleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 	// タッチ座標取得
 	Vec2 touchPos = touch->getLocation();
 
+	// パーティクル(簡易)
+	CCParticleSystemQuad* particle = CCParticleSystemQuad::create("Effects/ontouch.plist");
+	particle->resetSystem();
+	particle->setPosition(touchPos);
+	this->addChild(particle, 2);
+
 	return true;
 }
 
 void TitleLayer::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 {
+	// タッチ座標取得
+	Vec2 touchPos = touch->getLocation();
 
+	// パーティクル(簡易)
+	CCParticleSystemQuad* particle = CCParticleSystemQuad::create("Effects/ontouch.plist");
+	particle->resetSystem();
+	particle->setPosition(touchPos);
+	this->addChild(particle, 2);
 }
 
 void TitleLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)

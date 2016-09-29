@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include"Shibata/Example/Example.h"
-
+#include"Example/Example.h"
+#include"Harada/Temporary/Temporary.h"
 // ‰¼
 #include <Harada/Title/TitleScene.h>
 
@@ -47,10 +47,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-	//auto scene = Example::createScene();
+	auto scene = Temporary::createScene();
 
-	// ‰¼
-	auto scene = TitleScene::create();
 
     // run
     director->runWithScene(scene);

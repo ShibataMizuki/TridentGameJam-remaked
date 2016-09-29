@@ -12,7 +12,6 @@ bool AllyCharacter::init()
 
 void AllyCharacter::update(float dt)
 {
-	executeAttack(dt);
 }
 
 
@@ -20,19 +19,19 @@ void AllyCharacter::setSpriteAnimation(const std::string& filename)
 {
 	auto animation = Animation::create();
 
-	float width = CHARA_PIC_SIZE_W / (float)CHARA_PIC_NUM_X;
-	float height = CHARA_PIC_SIZE_H / (float)CHARA_PIC_NUM_Y;
+	float width = CHARA_PIC_SIZE_W / (float)CHARA_PIC_DIV_X;
+	float height = CHARA_PIC_SIZE_H / (float)CHARA_PIC_DIV_Y;
 
 	auto origin = Sprite::create();
 	addChild(origin);
 
-	SpriteFrame* sprites[CHARA_PIC_NUM_X*CHARA_PIC_NUM_Y];
+	SpriteFrame* sprites[CHARA_PIC_DIV_X*CHARA_PIC_DIV_Y];
 
 	int cnt = 0;
 
-	for (int y = 0; y < CHARA_PIC_NUM_Y; y++)
+	for (int y = 0; y < CHARA_PIC_DIV_Y; y++)
 	{
-		for (int x = 0; x < CHARA_PIC_NUM_X; x++)
+		for (int x = 0; x < CHARA_PIC_DIV_X; x++)
 		{
 			sprites[cnt]=SpriteFrame::create(filename, Rect(width*x, height*y, width,height));
 			cnt++;
@@ -126,4 +125,14 @@ void AllyCharacter::healSp(float healValue)
 bool AllyCharacter::isArrive() const
 {
 	return m_currentHp <= 0.0;
+}
+
+void AllyCharacter::enableSkill()
+{
+	m_skillEnabled = true;
+}
+
+bool AllyCharacter::isSkillEnabled()const
+{
+	return m_skillEnabled;
 }

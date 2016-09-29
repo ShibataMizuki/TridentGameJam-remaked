@@ -151,6 +151,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="Assets\Harada\background\backgroundLayer.cpp" />
     <ClCompile Include="Assets\Harada\bullet\Bullet.cpp" />
     <ClCompile Include="Assets\Harada\MyAction.cpp" />
+    <ClCompile Include="Assets\Harada\Temporary\Temporary.cpp" />
     <ClCompile Include="Assets\Harada\Title\TitleLayer.cpp" />
     <ClCompile Include="Assets\Harada\Title\TitleScene.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.cpp" />
@@ -164,8 +165,9 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSVec2\CSVec2.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSworld\CSWorld.cpp" />
     <ClCompile Include="Assets\Shibata\DebugDraw\DebugDraw.cpp" />
-    <ClCompile Include="Assets\Shibata\Example\Example.cpp" />
+    <ClCompile Include="Assets\Example\Example.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.cpp" />
+    <ClCompile Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.cpp" />
     <ClCompile Include="Assets\Shibata\GameObject\GameObject.cpp" />
     <ClCompile Include="Assets\Shibata\Party\Party.cpp" />
     <ClCompile Include="Assets\Shibata\Utility\Utility.cpp" />
@@ -177,6 +179,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="Assets\Harada\background\backgroundLayer.h" />
     <ClInclude Include="Assets\Harada\bullet\Bullet.h" />
     <ClInclude Include="Assets\Harada\MyAction.h" />
+    <ClInclude Include="Assets\Harada\Temporary\Temporary.h" />
     <ClInclude Include="Assets\Harada\Title\TitleLayer.h" />
     <ClInclude Include="Assets\Harada\Title\TitleScene.h" />
     <ClInclude Include="Assets\Shibata\Defines.h" />
@@ -192,8 +195,9 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSVec2\CSVec2.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CSworld\CSWorld.h" />
     <ClInclude Include="Assets\Shibata\DebugDraw\DebugDraw.h" />
-    <ClInclude Include="Assets\Shibata\Example\Example.h" />
+    <ClInclude Include="Assets\Example\Example.h" />
     <ClInclude Include="Assets\Shibata\GameObject\AllyCharacter\AllyCharacter.h" />
+    <ClInclude Include="Assets\Shibata\GameObject\EnemyCharacter\EnemyCharacter.h" />
     <ClInclude Include="Assets\Shibata\GameObject\GameObject.h" />
     <ClInclude Include="Assets\Shibata\Party\Party.h" />
     <ClInclude Include="Assets\Shibata\Utility\Utility.h" />

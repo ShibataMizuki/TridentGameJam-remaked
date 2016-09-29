@@ -1,7 +1,7 @@
 #pragma once
 
 #include<cocos2d.h>
-#include"../CollisionSystem/CollisionSystem.h"
+#include"Shibata/CollisionSystem/CollisionSystem.h"
 
 class Example :public cocos2d::Layer
 {
