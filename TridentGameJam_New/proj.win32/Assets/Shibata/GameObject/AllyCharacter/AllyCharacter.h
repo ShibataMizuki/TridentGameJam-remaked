@@ -63,11 +63,13 @@ public:
 	/*==============================
 	行動管理
 	===============================*/
-private:
+protected:
 	bool m_skillEnabled;
 public:
 	//! スキル有効化
 	void enableSkill();
+	//! スキル無効化
+	void disableSkill();
 	//! スキルが有効かどうか
 	bool isSkillEnabled()const;
 };

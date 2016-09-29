@@ -120,6 +120,11 @@ void AllyCharacter::enableSkill()
 	m_skillEnabled = true;
 }
 
+void AllyCharacter::disableSkill()
+{
+	m_skillEnabled = false;
+}
+
 bool AllyCharacter::isSkillEnabled()const
 {
 	return m_skillEnabled;
