@@ -162,7 +162,7 @@ bool Example::init()
 	Party* party = Party::create();
 	auto testChara = TestCharacter::create();
 	auto body = CSBody::createShared();
-	body->addShape(CSCircle::createShared(30.f));
+	body->addShape(CSCircle::createShared(50.f));
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
 	testChara->setSpriteAnimation("Characters/Character01.png");
