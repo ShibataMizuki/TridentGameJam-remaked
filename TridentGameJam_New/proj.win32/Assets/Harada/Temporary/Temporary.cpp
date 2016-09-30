@@ -10,6 +10,12 @@
 
 #include"Shibata/Party/Party.h"
 
+// ========================================================== //
+#include"Harada\background\backgroundLayer.h"
+// ========================================================== //
+
+
+
 USING_NS_CC;
 
 static CSWorld* g_pWorld;
@@ -83,6 +89,10 @@ public:
 
 		m_shotInterval = 0.2f;
 
+		// 追加
+		m_maxSp = 50.0f;
+		m_currentSp = 50.0f;
+
 		return true;
 	}
 
@@ -106,13 +116,19 @@ cocos2d::Scene * Temporary::createScene()
 {
 	auto scene = Scene::create();
 	auto layer = Temporary::create();
-	scene->addChild(layer);
+	scene->addChild(layer, 2);
+	// ========================================================== //
+	auto backgroundlayer = backgroundLayer::create();
+	scene->addChild(backgroundlayer);
+	// ========================================================== //
 	return scene;
 }
 
 bool Temporary::init()
 {
 	// ========================================================== //
+	// 画面サイズ
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 	// イベントリスナー作成
 	auto Listener = EventListenerTouchOneByOne::create();
 	// リスナーに設定
@@ -171,18 +187,19 @@ bool Temporary::init()
 	debugDraw->setCSWorld(g_pWorld);
 	addChild(debugDraw);
 
-	auto background = Sprite::create("Backgrounds/plain.jpg");
+	/*auto background = Sprite::create("Backgrounds/plain.jpg");
 	background->setAnchorPoint(Vec2(0.f, 0.f));
-	addChild(background);
+	addChild(background);*/
 
-	Party* party = Party::create();
+	//Party* party = Party::create();
+	g_party = Party::create();
 	auto testChara = TestCharacter::create();
 	auto body = CSBody::createShared();
 	body->addShape(CSCircle::createShared(30.f));
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
 	testChara->setSpriteAnimation("Characters/Character01.png");
-	party->setPartyMember(testChara, PartyIndex::_1);
+	g_party->setPartyMember(testChara, PartyIndex::_1);
 
 	// ========================================================== //
 	auto testChara2 = TestCharacter::create();
@@ -191,11 +208,38 @@ bool Temporary::init()
 	g_pWorld->addBody(body2);
 	testChara2->setBody(body2);
 	testChara2->setSpriteAnimation("Characters/Character02.png");
-	party->setPartyMember(testChara2, PartyIndex::_2);
+	g_party->setPartyMember(testChara2, PartyIndex::_2);
+
+
+	for (int i = 0; i < 4; i++) {
+		// ボタン(横200,縦160)
+		m_button[i] = ui::Button::create("Backgrounds/button1.png", "Backgrounds/button2.png");
+		m_button[i]->setPosition(Vec2(visibleSize.width - 100, visibleSize.height - 80 - 160 * i));
+		this->addChild(m_button[i],2);
+		//m_button[i]->addTouchEventListener(CC_CALLBACK_2(Temporary::ButtonEvent, this));
+	}
+	// よくわからないからとりあえず個別に
+	m_button[0]->addTouchEventListener(CC_CALLBACK_2(Temporary::ButtonEvent1, this));
+	m_button[1]->addTouchEventListener(CC_CALLBACK_2(Temporary::ButtonEvent2, this));
+
+	for (int i = 0; i < 4; i++) {
+		// SPバー(横150)
+		m_SPbar[i] = Sprite::create("Backgrounds/spbar.png");
+		m_SPbar[i]->setAnchorPoint(Vec2(0.f, 0.f));
+		m_SPbar[i]->setPosition(Vec2(visibleSize.width - 75 - 100, visibleSize.height - 80  - 160 * i));
+		this->addChild(m_SPbar[i],3);
+	}
+	for (int i = 0; i < 4; i++) {
+		// HPバー(横150)
+		m_HPbar[i] = Sprite::create("Backgrounds/hpbar.png");
+		m_HPbar[i]->setAnchorPoint(Vec2(0.f, 0.f));
+		m_HPbar[i]->setPosition(Vec2(visibleSize.width - 75 - 100, visibleSize.height - 100 - 160 * i));
+		this->addChild(m_HPbar[i],3);
+	}
 	// ========================================================== //
 
 
-	addChild(party);
+	addChild(g_party);
 	this->scheduleUpdate();
 
 	return true;
@@ -236,7 +280,7 @@ void Temporary::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 void Temporary::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 	// アップデートを止める
-	this->unscheduleUpdate();
+	//this->unscheduleUpdate();
 	/*auto nextScene = ::create();
 	Director::getInstance()->replaceScene(TransitionPageTurn::create(2.0f ,nextScene,0));*/
 }
@@ -244,4 +288,63 @@ void Temporary::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 void Temporary::onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 
+}
+
+
+
+void Temporary::ButtonEvent1(Ref *pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::Widget::TouchEventType::BEGAN:
+		if (g_party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
+		{
+			// スキル有効化
+			g_party->getPartyMember(PartyIndex::_1)->enableSkill();
+			// SP消費
+			g_party->getPartyMember(PartyIndex::_1)->useSp(5.0f);
+			// 仮
+			log("pushed");
+			float num = g_party->getPartyMember(PartyIndex::_1)->getCurrentSp();
+			float num2 = g_party->getPartyMember(PartyIndex::_1)->getMaxSp();
+			// SP残量によってサイズ変更
+			m_SPbar[0]->setScaleX(num/num2);
+			log("%f:%f", num, num2);
+			// スキル無効化
+			g_party->getPartyMember(PartyIndex::_1)->disableSkill();
+		}
+		break;
+	case ui::Widget::TouchEventType::MOVED:
+		break;
+	case ui::Widget::TouchEventType::ENDED:
+		break;
+	}
+}
+void Temporary::ButtonEvent2(Ref *pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::Widget::TouchEventType::BEGAN:
+		if (g_party->getPartyMember(PartyIndex::_2)->isSkillEnabled() == false)
+		{
+			// スキル有効化
+			g_party->getPartyMember(PartyIndex::_2)->enableSkill();
+			// SP消費
+			g_party->getPartyMember(PartyIndex::_2)->useSp(5.0f);
+			// 仮
+			log("pushed");
+			float num = g_party->getPartyMember(PartyIndex::_2)->getCurrentSp();
+			float num2 = g_party->getPartyMember(PartyIndex::_2)->getMaxSp();
+			// SP残量によってサイズ変更
+			m_SPbar[1]->setScaleX(num / num2);
+			log("%f:%f", num, num2);
+			// スキル無効化
+			g_party->getPartyMember(PartyIndex::_2)->disableSkill();
+		}
+		break;
+	case ui::Widget::TouchEventType::MOVED:
+		break;
+	case ui::Widget::TouchEventType::ENDED:
+		break;
+	}
 }
