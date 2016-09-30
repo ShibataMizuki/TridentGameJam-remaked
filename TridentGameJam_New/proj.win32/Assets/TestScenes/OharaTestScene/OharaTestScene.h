@@ -1,9 +1,12 @@
 #pragma once
 
 #include "cocos2d.h"
+#include"Shibata/CollisionSystem/CollisionSystem.h"
 
 class OharaTestScene : public cocos2d::Layer
 {
+private:
+	CSWorld* m_pWorld;
 public:
 	// there's no 'id' in cpp, so we recommend returning the class instance pointer
 	static cocos2d::Scene* createScene();
