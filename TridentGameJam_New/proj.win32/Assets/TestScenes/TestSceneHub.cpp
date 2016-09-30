@@ -35,10 +35,14 @@ bool TestSceneHub::init()
 
 	tuple<function<void(cocos2d::Ref*, cocos2d::ui::Widget::TouchEventType)>, string, Vec2> gate[4];
 
-	get<0>(gate[0]) = [](Ref* sender, ui::Widget::TouchEventType type) {Director::getInstance()->pushScene(ShibataTestScene::createScene()); };
-	get<0>(gate[1]) = [](Ref* sender, ui::Widget::TouchEventType type) {Director::getInstance()->pushScene(JussiTestScene::createScene()); };
-	get<0>(gate[2]) = [](Ref* sender, ui::Widget::TouchEventType type) {Director::getInstance()->pushScene(HaradaTestScene::createScene()); };
-	get<0>(gate[3]) = [](Ref* sender, ui::Widget::TouchEventType type) {Director::getInstance()->pushScene(OharaTestScene::createScene()); };
+	get<0>(gate[0]) = [](Ref* sender, ui::Widget::TouchEventType type) 
+	{if(type==ui::Widget::TouchEventType::ENDED)Director::getInstance()->pushScene(ShibataTestScene::createScene()); };
+	get<0>(gate[1]) = [](Ref* sender, ui::Widget::TouchEventType type) 
+	{if (type == ui::Widget::TouchEventType::ENDED)Director::getInstance()->pushScene(JussiTestScene::createScene()); };
+	get<0>(gate[2]) = [](Ref* sender, ui::Widget::TouchEventType type) 
+	{if (type == ui::Widget::TouchEventType::ENDED)Director::getInstance()->pushScene(HaradaTestScene::createScene()); };
+	get<0>(gate[3]) = [](Ref* sender, ui::Widget::TouchEventType type)
+	{if (type == ui::Widget::TouchEventType::ENDED)Director::getInstance()->pushScene(OharaTestScene::createScene()); };
 	get<1>(gate[0]) = "GOTO ShibataTestScene";get<1>(gate[1]) = "GOTO JussiTestScene";
 	get<1>(gate[2]) = "GOTO HaradaTestScene";get<1>(gate[3]) = "GOTO OharaTestScene";
 	get<2>(gate[0]) = Vec2(150.f, 150.f);get<2>(gate[1]) = Vec2(600.f, 150.f);

@@ -1,0 +1,9 @@
+*.suo
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.vcxproj.filters
