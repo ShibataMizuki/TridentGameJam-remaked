@@ -2,6 +2,11 @@
 
 #include<cocos2d.h>
 #include"Shibata/CollisionSystem/CollisionSystem.h"
+#include"Shibata/Party/Party.h"
+
+
+// ボタン用
+#include "ui/CocosGUI.h"
 
 class Temporary :public cocos2d::Layer
 {
@@ -18,6 +23,12 @@ public:
 	void update(float dt)override;
 
 	// ========================================================== //
+	// パーティ
+	Party* g_party;
+
+	// ボタン
+	void ButtonEvent(Ref *pSender, cocos2d::ui::Widget::TouchEventType type);
+
 	// タッチ開始
 	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 	// タッチ移動
