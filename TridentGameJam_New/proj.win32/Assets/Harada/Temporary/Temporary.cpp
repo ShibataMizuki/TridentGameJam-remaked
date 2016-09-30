@@ -89,6 +89,10 @@ public:
 
 		m_shotInterval = 0.2f;
 
+		// ’Ç‰Á
+		m_maxSp = 50.0f;
+		m_currentSp = 50.0f;
+
 		return true;
 	}
 
@@ -280,8 +284,15 @@ void Temporary::ButtonEvent(Ref *pSender, cocos2d::ui::Widget::TouchEventType ty
 		if (g_party->getPartyMember(PartyIndex::_1)->isSkillEnabled() == false)
 		{
 			g_party->getPartyMember(PartyIndex::_1)->enableSkill();
-			g_party->getPartyMember(PartyIndex::_1)->useSp(5);
+			g_party->getPartyMember(PartyIndex::_1)->useSp(5.0f);
 			log("pushed");
+
+			// ‰¼
+			float num = g_party->getPartyMember(PartyIndex::_1)->getCurrentSp();
+			float num2 = g_party->getPartyMember(PartyIndex::_1)->getMaxSp();
+
+			log("%f:%f",num, num2);
+
 		}
 		break;
 	case ui::Widget::TouchEventType::MOVED:
