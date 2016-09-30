@@ -12,10 +12,26 @@ public:
 	static cocos2d::Scene* createScene();
 
 	//! @brief ‰Šú‰»
-	virtual bool init();
+	virtual bool init(/*param*/);
 
 	//! @brief XV
 	void update(float dt)override;
 
-	CREATE_FUNC(Example);
+	//CREATE_FUNC(Example);
+
+	static Example* create(/*param*/)
+	{
+		Example* pRet = new(std::nothrow) Example();
+		if (pRet&&pRet->init(/*param*/))
+		{
+			pRet->autorelease();
+			return pRet;
+		}
+		else
+		{
+			delete pRet;
+			pRet = nullptr;
+			return nullptr;
+		}
+	}
 };
