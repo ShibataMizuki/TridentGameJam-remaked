@@ -2,8 +2,6 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
-#include"Harada\Temporary\Temporary.h"
-#include"Harada\background\backgroundLayer.h"
 USING_NS_CC;
 
 Scene* HaradaTestScene::createScene()
@@ -12,11 +10,10 @@ Scene* HaradaTestScene::createScene()
 	auto scene = Scene::create();
 
 	// 'layer' is an autorelease object
-	auto layer = Temporary::create();
-	auto backlayer = backgroundLayer::create();
+	auto layer = HaradaTestScene::create();
+
 	// add layer as a child to scene
-	scene->addChild(layer,2);
-	scene->addChild(backlayer);
+	scene->addChild(layer);
 
 	// return the scene
 	return scene;
