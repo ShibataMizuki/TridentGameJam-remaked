@@ -155,6 +155,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="Assets\Harada\Title\TitleLayer.cpp" />
     <ClCompile Include="Assets\Harada\Title\TitleScene.cpp" />
     <ClCompile Include="Assets\Jussi\MessageSystem\MessageSystem.cpp" />
+    <ClCompile Include="Assets\Jussi\TownScene\TownScene.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSBody\CSBody.cpp" />
     <ClCompile Include="Assets\Shibata\CollisionSystem\CSHitCallback\CSHitCallback.cpp" />
@@ -189,6 +190,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="Assets\Harada\Title\TitleLayer.h" />
     <ClInclude Include="Assets\Harada\Title\TitleScene.h" />
     <ClInclude Include="Assets\Jussi\MessageSystem\MessageSystem.h" />
+    <ClInclude Include="Assets\Jussi\TownScene\TownScene.h" />
     <ClInclude Include="Assets\Shibata\Defines.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystemDebugDraw\CollisionSystemDebugDraw.h" />
     <ClInclude Include="Assets\Shibata\CollisionSystem\CollisionSystem.h" />

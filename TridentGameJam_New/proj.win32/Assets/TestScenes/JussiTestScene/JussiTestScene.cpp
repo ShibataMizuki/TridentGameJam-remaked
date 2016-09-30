@@ -2,6 +2,8 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
+#include <Jussi/MessageSystem/MessageSystem.h>
+
 USING_NS_CC;
 
 Scene* JussiTestScene::createScene()
@@ -26,5 +28,13 @@ bool JussiTestScene::init()
 	{
 		return false;
 	}
+
+	//Create layers
+	auto messageSystem = MessageSystem::create(MessageType::YESNO, "Test");
+
+	//Add layers as a child
+	//add background
+	this->addChild(messageSystem);
+
 	return true;
 }

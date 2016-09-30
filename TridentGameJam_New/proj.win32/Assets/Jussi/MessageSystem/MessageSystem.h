@@ -3,8 +3,6 @@
 #include <cocos2d.h>
 #include <ui/CocosGUI.h>
 
-
-
 #include <string>
 #include <vector>
 
@@ -13,9 +11,8 @@ enum class MessageType {SINGLE, YESNO};
 class MessageSystem : public cocos2d::Layer
 {
 public:
-	MessageSystem(MessageType messageType, std::string text);
-
-	virtual bool init();
+	static MessageSystem* create(MessageType mtype, std::string mtext);
+	virtual bool init(MessageType mtype, std::string mtext);
 
 	void createMenuButtons(MessageType messageType);
 
@@ -23,7 +20,10 @@ public:
 	void buttonSelectedYes(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType eventType);
 	void buttonSelectedNo(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType eventType);
 
-	//void touchCallBack(cocos2d::EventListenerTouchOneByOne::, cocos2d::Event* event);
+	void setMessageType(MessageType mtype);
+	void setMessageText(std::string mtext);
+	
+
 
 private:
 	//Attributes for the MessageBox
@@ -35,13 +35,8 @@ private:
 	cocos2d::Point m_TouchPosition;
 	bool m_IsTouching;
 
-	//int m_Height;
-	//int m_Width;
-
 	//Label
 	cocos2d::Label* m_Label;
-	//int m_LabelPosX;
-	//int m_LabelPosY;
 
 	//Buttons
 	cocos2d::ui::Button* m_ButtonOK;
