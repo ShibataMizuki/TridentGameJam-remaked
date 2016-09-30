@@ -187,10 +187,6 @@ bool Temporary::init()
 	debugDraw->setCSWorld(g_pWorld);
 	addChild(debugDraw);
 
-	/*auto background = Sprite::create("Backgrounds/plain.jpg");
-	background->setAnchorPoint(Vec2(0.f, 0.f));
-	addChild(background);*/
-
 	//Party* party = Party::create();
 	g_party = Party::create();
 	auto testChara = TestCharacter::create();
