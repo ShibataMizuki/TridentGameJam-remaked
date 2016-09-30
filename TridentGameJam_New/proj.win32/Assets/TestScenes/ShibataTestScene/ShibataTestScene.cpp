@@ -7,13 +7,15 @@
 
 //! (optional) include CollisionSystemDebugDraw.h
 #include"Shibata/CollisionSystemDebugDraw/CollisionSystemDebugDraw.h"
-
 #include"Shibata/GameObject/AllyCharacter/AllyCharacter.h"
-
 #include"Shibata/Party/Party.h"
+#include"Shibata/Utility/Utility.h"
+#include"Shibata/Defines.h"
+
+#include<vector>
 
 USING_NS_CC;
-
+using namespace std;
 static CSWorld* g_pWorld;
 
 enum ObjectType
@@ -26,11 +28,11 @@ enum ObjectType
 /*==============================
 味方の弾
 ===============================*/
-class TestBullet :public GameObject
+class TestBullet2 :public GameObject
 {
 private:
 public:
-	CREATE_FUNC(TestBullet);
+	CREATE_FUNC(TestBullet2);
 
 	bool init()override
 	{
@@ -64,7 +66,7 @@ public:
 味方キャラクターの作り方
 ===============================*/
 //! AllyCharacterを継承したクラスを作る
-class TestCharacter :public AllyCharacter
+class TestCharacter2 :public AllyCharacter
 {
 private:
 	//! 経過時間
@@ -73,7 +75,7 @@ private:
 	float m_shotInterval;
 
 public:
-	CREATE_FUNC(TestCharacter);
+	CREATE_FUNC(TestCharacter2);
 
 	bool init()override
 	{
@@ -93,7 +95,7 @@ public:
 		m_elapsedTime += dt;
 		if (m_elapsedTime >= m_shotInterval)
 		{
-			auto bullet = TestBullet::create();
+			auto bullet = TestBullet2::create();
 			bullet->setPosition(getParent()->convertToWorldSpace(getPosition()));
 			getParent()->getParent()->addChild(bullet);
 			m_elapsedTime = 0.0f;
@@ -127,6 +129,7 @@ bool ShibataTestScene::init()
 	}
 
 	g_pWorld = new CSWorld();
+	
 	//! 3. create body
 	auto bodyA = CSBody::createShared();
 	//! 4. create shape and setting to body
@@ -153,7 +156,7 @@ bool ShibataTestScene::init()
 	//! 9. setting callback
 	callback->HitBegin = [](const std::shared_ptr<CSBody>& bodyA, const std::shared_ptr<CSBody>& bodyB)
 	{
-		auto bullet = bodyA->getCastedUserData<TestBullet>();
+		auto bullet = bodyA->getCastedUserData<TestBullet2>();
 		bullet->removeFromParent();
 		g_pWorld->destroyBody(bodyA);
 	};
@@ -172,15 +175,20 @@ bool ShibataTestScene::init()
 	addChild(background);
 
 	Party* party = Party::create();
-	auto testChara = TestCharacter::create();
+	auto testChara = TestCharacter2::create();
 	auto body = CSBody::createShared();
 	body->addShape(CSCircle::createShared(50.f));
 	g_pWorld->addBody(body);
 	testChara->setBody(body);
-	testChara->setSpriteAnimation("Characters/Character01.png");
+
+	auto sprites = divideSprite(Sprite::create("Characters/Character01.png"), CHARA_PIC_DIV_X, CHARA_PIC_DIV_Y);
+	vector<int> indexes = { 6, 7, 8 };
+	testChara->runAnimation(makeAnimation(move(sprites),indexes,0.1f, -1));
+	//testChara->setSpriteAnimation("Characters/Character01.png");
 	party->setPartyMember(testChara, PartyIndex::_1);
 
 	addChild(party);
+
 	this->scheduleUpdate();
 
 	return true;

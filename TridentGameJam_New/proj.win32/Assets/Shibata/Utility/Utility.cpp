@@ -34,3 +34,15 @@ std::vector<cocos2d::SpriteFrame*> divideSprite(cocos2d::Sprite * pSprite, int d
 
 	return move(ret);
 }
+
+cocos2d::Animation * makeAnimation(std::vector<cocos2d::SpriteFrame*> sprites, std::vector<int> indexes, float delayPerUnit,int loops)
+{
+	Animation* pAnimation = Animation::create();
+	for (auto index : indexes)
+	{
+		pAnimation->addSpriteFrame(sprites[index]);
+	}
+	pAnimation->setDelayPerUnit(delayPerUnit);
+	pAnimation->setLoops(loops);
+	return pAnimation;
+}

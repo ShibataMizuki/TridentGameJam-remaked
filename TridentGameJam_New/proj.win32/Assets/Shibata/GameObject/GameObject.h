@@ -41,6 +41,21 @@ public:
 	void syncBody();
 
 	/*==============================
+	スプライトアニメーションの管理
+	===============================*/
+protected:
+	//! スプライト
+	cocos2d::Sprite* m_pSprite;
+public:
+	//! @brief スプライトを取得
+	cocos2d::Sprite* getSprite()const;
+
+	//! @brief アニメーションを実行
+	//! @param 実行するアニメーション
+	void runAnimation(cocos2d::Animation* pAnimation);
+	
+
+	/*==============================
 	コンストラクタ/デストラクタ
 	===============================*/
 public:
